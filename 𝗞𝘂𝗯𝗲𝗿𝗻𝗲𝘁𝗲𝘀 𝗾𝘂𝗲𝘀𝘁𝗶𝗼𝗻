@@ -1,0 +1,45 @@
+𝗛𝗼𝘄 𝗱𝗼 𝘆𝗼𝘂 𝗮𝗻𝘀𝘄𝗲𝗿 𝗮 𝗺𝗼𝘀𝘁 𝗮𝘀𝗸𝗲𝗱 𝗞𝘂𝗯𝗲𝗿𝗻𝗲𝘁𝗲𝘀 𝗾𝘂𝗲𝘀𝘁𝗶𝗼𝗻 𝗶𝗻 𝗗𝗲𝘃𝗢𝗽𝘀 𝗶𝗻𝘁𝗲𝗿𝘃𝗶𝗲𝘄𝘀?
+
+𝗤𝘂𝗲𝘀𝘁𝗶𝗼𝗻: Your application runs in Kubernetes, but users report they cannot access it. What do you do?
+
+Here is how you ace this question:
+
+1. 𝗖𝗵𝗲𝗰𝗸 𝗣𝗼𝗱 𝗹𝗼𝗴𝘀
+- Run 𝘬𝘶𝘣𝘦𝘤𝘵𝘭 𝘨𝘦𝘵 𝘱𝘰𝘥𝘴 to verify pod status and ensure they're in Running state
+- Check pod logs using 𝘬𝘶𝘣𝘦𝘤𝘵𝘭 𝘭𝘰𝘨𝘴 <𝘱𝘰𝘥-𝘯𝘢𝘮𝘦> to identify application errors
+- Examine pod events with 𝘬𝘶𝘣𝘦𝘤𝘵𝘭 𝘥𝘦𝘴𝘤𝘳𝘪𝘣𝘦 𝘱𝘰𝘥 <𝘱𝘰𝘥-𝘯𝘢𝘮𝘦>
+
+𝟮. 𝗖𝗵𝗲𝗰𝗸 𝗦𝗲𝗿𝘃𝗶𝗰𝗲
+- Check service configuration with 𝘬𝘶𝘣𝘦𝘤𝘵𝘭 𝘨𝘦𝘵 𝘴𝘷𝘤
+- Verify service type (ClusterIP/NodePort/LoadBalancer)
+- Ensure the service selector matches pod labels
+- Confirm correct ports are exposed
+
+𝟯. 𝗖𝗵𝗲𝗰𝗸 𝗡𝗲𝘁𝘄𝗼𝗿𝗸 𝗣𝗼𝗹𝗶𝗰𝘆
+- List network policies: 𝘬𝘶𝘣𝘦𝘤𝘵𝘭 𝘨𝘦𝘵 𝘯𝘦𝘵𝘸𝘰𝘳𝘬𝘱𝘰𝘭𝘪𝘤𝘪𝘦𝘴
+- Verify policies allow traffic to application ports
+- Check if any policies are blocking incoming connections
+
+𝟰. 𝗖𝗵𝗲𝗰𝗸 𝗜𝗻𝗴𝗿𝗲𝘀𝘀 𝗮𝗻𝗱 𝗗𝗡𝗦
+- Check ingress configuration with 𝘬𝘶𝘣𝘦𝘤𝘵𝘭 𝘨𝘦𝘵 𝘪𝘯𝘨𝘳𝘦𝘴𝘴
+- Confirm DNS records point to correct IP addresses
+- Validate SSL/TLS certificates if using HTTPS
+
+𝟱. 𝗡𝗼𝗱𝗲 𝗮𝗻𝗱 𝗖𝗹𝘂𝘀𝘁𝗲𝗿 𝗛𝗲𝗮𝗹𝘁𝗵
+- Check node status with 𝘬𝘶𝘣𝘦𝘤𝘵𝘭 𝘨𝘦𝘵 𝘯𝘰𝘥𝘦𝘴
+- Review node resource utilization
+- Examine cluster events: 𝘬𝘶𝘣𝘦𝘤𝘵𝘭 𝘨𝘦𝘵 𝘦𝘷𝘦𝘯𝘵𝘴
+
+𝟲. 𝗗𝗲𝗯𝘂𝗴 𝘄𝗶𝘁𝗵 𝗣𝗼𝗿𝘁 𝗙𝗼𝗿𝘄𝗮𝗿𝗱𝗶𝗻𝗴
+- Use 𝘬𝘶𝘣𝘦𝘤𝘵𝘭 𝘱𝘰𝘳𝘵-𝘧𝘰𝘳𝘸𝘢𝘳𝘥 to test direct pod access
+- This helps isolate whether the issue is with the application or Kubernetes configuration
+
+𝟳. 𝗠𝗼𝗻𝗶𝘁𝗼𝗿 𝘄𝗶𝘁𝗵 𝗧𝗼𝗼𝗹𝘀
+- Review metrics in Prometheus/Grafana if available
+- Check the Kubernetes dashboard for cluster insights
+- Look for any alerts or anomalies
+
+𝗣𝗿𝗼 𝗧𝗶𝗽𝘀:
+- Always start with the simplest checks first
+- Document your troubleshooting steps
+- Consider recent changes that might have impacted connectivity
