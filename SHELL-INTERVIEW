@@ -1,0 +1,67 @@
+Sure! Here are easy explanations for each of your questions:
+
+### 1) What is a sticky bit in Linux?
+The sticky bit is a special permission that can be set on a directory in Linux. When the sticky bit is set on a directory, only the file's owner (or the root user) can delete or rename the files within that directory. This is commonly used on directories like `/tmp`, where many users can create files but shouldn't be able to delete each other's files.
+
+### 2) How do we verify if our shell script executed successfully?
+In a shell script, you can check if the last executed command was successful by examining the special variable `$?`. If it returns `0`, the command was successful. You can also use the `if` statement to handle the success or failure:
+
+```bash
+#!/bin/bash
+your_command
+if [ $? -eq 0 ]; then
+    echo "Success!"
+else
+    echo "Failure."
+fi
+```
+
+### 3) What is the flag to check if a file is empty or not?
+You can use the `-s` flag with the `test` command (or within brackets) to check if a file is not empty. To check if a file is empty, you can use `-z` with the string version of the file content or simply check its size:
+
+```bash
+if [ -s yourfile.txt ]; then
+    echo "File is not empty."
+else
+    echo "File is empty."
+fi
+```
+
+### 4) What is a positional parameter?
+Positional parameters are variables that hold the values of command line arguments passed to a shell script or function. They are referred to by their position, starting with `$1` for the first argument, `$2` for the second, and so on. For example:
+
+```bash
+#!/bin/bash
+echo "First argument: $1"
+echo "Second argument: $2"
+```
+
+### 5) What is command substitution?
+Command substitution allows you to capture the output of a command and use it as an argument in another command. It is done using backticks (`` ` ``) or the `$(...)` syntax. For example:
+
+```bash
+current_date=$(date)
+echo "Today's date is: $current_date"
+```
+
+### 6) How do you set `crontab`?
+You can set up a crontab by running the command `crontab -e`, which opens the crontab file in an editor. You can then schedule tasks by adding lines in the format:
+
+```
+* * * * * /path/to/your/script.sh
+```
+
+The five asterisks represent minutes, hours, days of the month, months, and days of the week when the task should run. Once you save and exit, the task is scheduled.
+
+### 7) How will your .sh script configured in `CRONTAB` run when the system is restarted?
+When you add a job to the crontab using `crontab -e`, it is saved in the cron scheduler, which keeps running in the background. If you schedule a script to run at a specific time (say every day at 6 AM), the cron daemon will automatically check and run that script at the scheduled time, regardless of whether the system was restarted or not.
+
+If you want certain jobs to run at startup, you can also schedule them in the `@reboot` entry in crontab:
+
+```
+@reboot /path/to/your/script.sh
+```
+
+This way, whenever the system restarts, your script will execute.
+
+I hope this helps! Let me know if you have any more questions!
